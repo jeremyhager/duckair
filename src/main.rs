@@ -1,9 +1,7 @@
-use std::fmt::format;
-
 fn main() {
     let duck = "Duck";
     let airlines = "Airlines";
 
-    let airline_name = format!("{} {}", duck, airliness);
+    let airline_name = format!("{} {}", duck, airlines);
     println!("{}", airline_name);
 }
