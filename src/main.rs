@@ -1,4 +1,4 @@
 fn main() {
-    let modules = 18 % 7;
-    println!("{}", modules);
+    let modulus = 18 % 7;
+    println!("{}", modulus);
 }
