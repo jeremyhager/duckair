@@ -1,14 +1,8 @@
 fn main() {
-    let duck = "Duck";
-    let airlines = "Airlines";
+    let float_thirty_two: f32 = 17.2;
+    let unsigned_eight: u8 = 5;
+    let cast_unsigned_eight = unsigned_eight as f32;
 
-    let airline_name = format!("{} {}", duck, airlines);
-    println!("{}", airline_name);
-
-    let mut slogan = String::new();
-    slogan.push_str("We hit the ground");
-    // slogan.push(' ');
-    // slogan = slogan + " every time";
-    slogan.push_str(" every time");
-    println!("{}", slogan);
+    let result = float_thirty_two / cast_unsigned_eight;
+    println!("{}", result);
 }
