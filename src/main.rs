@@ -1,13 +1,8 @@
 fn main() {
 
-    let have_driver_licese = false;
-    let have_passport = false;
-    let have_proof = have_driver_licese || have_passport;
+    let first_value = 10;
+    let second_value = 15;
+    let result = first_value > second_value;
 
-    let have_boarding_pass = true;
-    let have_id = have_proof;
-    let can_board  = have_boarding_pass && have_id;
-
-    println!("Boarding Pass: {}, ID: {}", have_boarding_pass, have_id);
-    println!("Can board plane: {}", can_board);
+    println!("{}", result);
 }
