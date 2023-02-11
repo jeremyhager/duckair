@@ -1,8 +1,16 @@
 fn main() {
+    let bitwise_and = 86 & 27;
+    println!("bitwise and: {}", bitwise_and);
 
-    let first_value = 10;
-    let second_value = 15;
-    let result = first_value > second_value;
+    let bitwise_or = 86 | 27;
+    println!("bitwise or: {}", bitwise_or);
 
-    println!("{}", result);
+    let bitwise_xor = 86 ^ 27;
+    println!("bitwise xor: {}", bitwise_xor);
+
+    let left_shift = 86<<1;
+    println!("left shift: {}", left_shift);
+
+    let right_shift = 86>>1;
+    println!("left shift: {}", right_shift);
 }
