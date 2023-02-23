@@ -1,11 +1,12 @@
-fn main() {
-    let availble_aircraft = "Boeing";
-    let min_crew = 7;
-    let avail_crew = 4;
+enum NavigationAids {
+    NDB = 3,
+    VOR = 2,
+    VORDME = 5,
+    FIX {name:String, latitude: f32, longitude: f32}
+}
 
-    if (availble_aircraft == "Boeing" 
-        || availble_aircraft == "Airbus")
-        && min_crew <= avail_crew {
-        println!("OK!");
-    }
+fn main() {
+    println!("NDB:\t{}", NavigationAids::NDB as u8);
+    println!("VOR:\t{}", NavigationAids::VOR as u8);
+    println!("VORDME:\t{}", NavigationAids::VORDME as u8);
 }
