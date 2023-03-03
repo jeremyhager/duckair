@@ -1,8 +1,29 @@
-pub fn side_lesson() {
-    panic_vector(); 
-}
+use std::fs::File;
+use std::io::ErrorKind;
 
-fn panic_vector() {
-    let vector = vec![1,2,3,4,5];
-    println!("{}", vector[10]);
+pub fn side_lesson() {
+    let filename = "/tmp/customer.json";
+
+    match File::open(filename) {
+        Ok(file) => {
+            println!("{:#?}", file);
+        },
+        Err(error) => {
+            match error.kind() {
+                ErrorKind::NotFound => {
+                    match File::create(filename) {
+                        Ok(file) => {
+                            println!("File created");
+                        }
+                        Err(error) => {
+                            println!("{:#?}", error);
+                        }
+                    }
+                }
+                _ => {
+                    println!("{:#?}", error);
+                }
+            }
+        }
+    }
 }
