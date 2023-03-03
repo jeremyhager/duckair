@@ -1,14 +1,24 @@
+use std::io::{Error, Read};
+use std::fs::File;
+
 pub fn side_lesson() {
-    let value_one = 24;
-    let value_two = 67;
-    let value = explicit_lifetime(&value_one, &value_two);
-    println!("{}", value);
+    let filename = "/tmp/example_data.txt";
+    let file_data = read_file(filename);
+
+    match file_data {
+        Ok(data) => {
+            println!("{}", data);
+        }
+        Err(_) => {
+
+        }
+    }
 }
 
-fn explicit_lifetime<'a>(p1: &'a i32, p2: &'a i32) -> &'a i32{
-    if p1 > p2 {
-        p1
-    } else {
-        p2
-    }
+fn read_file(filename: &str) -> Result<String, Error> {
+    let mut file_handle = File::open(filename)?;
+    let mut file_data = String::new();
+
+    file_handle.read_to_string(&mut file_data)?;
+    Ok(file_data)
 }
