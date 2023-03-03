@@ -1,13 +1,8 @@
 fn main() {
-    let mut counter = 0;
-    loop {
-        counter += 1;
-        if counter == 5 {
-            continue;
-        }
+    let mut counter = 1;
+    
+    while counter <= 10 {
         println!("{}", counter);
-        if counter == 10 {
-            break;
-        }
+        counter += 1;
     }
 }
