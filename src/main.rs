@@ -98,6 +98,6 @@ fn main() {
     print_nav_aid(&vor_dme_sgh);
     print_nav_aid(&fix_tarry);
 
-    println!("[side lesson]:");
+    println!("\n\n[side lesson]:");
     side_lesson();
 }
