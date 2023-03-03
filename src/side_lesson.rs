@@ -1,14 +1,8 @@
 pub fn side_lesson() {
-    let name = "Duck Airlines";
+    panic_vector(); 
+}
 
-    let write_message = |slogan: String| -> String {
-        String::from(format!("{}. {}", name, slogan))
-    };
-
-    let phrase = write_message(String::from("We hit the ground every time."));
-
-    println!("{}", phrase);
-
-    // let slogan = "We hit the ground every time.";
-    // println!("Welcome to {}. {}", name, slogan)
+fn panic_vector() {
+    let vector = vec![1,2,3,4,5];
+    println!("{}", vector[10]);
 }
