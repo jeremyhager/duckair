@@ -1,19 +1,14 @@
 pub fn side_lesson() {
-    let mut original = String::from("original value");
-    println!("\nouter scope original:\t\"{}\"", original);
-    {
-        print_original(&original);
-        change_original(&mut original);
-        println!("inner scope original:\t\"{}\"", original);
-    }
-}
+    let name = "Duck Airlines";
 
-fn print_original(original: &String) {
-    println!("fn print_original:\t\"{}\"", original)
-}
+    let write_message = |slogan: String| -> String {
+        String::from(format!("{}. {}", name, slogan))
+    };
 
-fn change_original(original: &mut String) {
-    let next = original;
-    *next = String::from("next value");
-    println!("fn change_original:\t\"{}\"", next);
+    let phrase = write_message(String::from("We hit the ground every time."));
+
+    println!("{}", phrase);
+
+    // let slogan = "We hit the ground every time.";
+    // println!("Welcome to {}. {}", name, slogan)
 }
