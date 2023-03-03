@@ -1,14 +1,12 @@
 pub fn side_lesson() {
-    let value_one = 24;
-    let value_two = 67;
-    let value = explicit_lifetime(&value_one, &value_two);
-    println!("{}", value);
+    let greater = return_greater(10, 5);
+    println!("{}", greater);
 }
 
-fn explicit_lifetime<'a>(p1: &'a i32, p2: &'a i32) -> &'a i32{
-    if p1 > p2 {
-        p1
+fn return_greater(first: u8, second: u8) -> u8 {
+    if first > second {
+        first
     } else {
-        p2
+        second
     }
 }
