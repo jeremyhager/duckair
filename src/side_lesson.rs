@@ -1,14 +1,9 @@
 pub fn side_lesson() {
-    let mut original = String::from("original value");
-    println!("\nOuter original value: \t\"{}\"", original);
-    
-    {
-        let next = &mut original;
-        *next = String::from("next value");
-        println!("inner original next: \t\"{}\"", next);
-        println!("inner original original: \t\"{}\"", original);
-    }
+    let referenced_int = 6;
+    let returned_value = return_one_parameter(&referenced_int);
+    println!("{}", returned_value);
+}
 
-    original = String::from("new value");
-    println!("\nOuter original value: \t\"{}\"", original);
+fn return_one_parameter(value: &i32) -> &i32{
+    value
 }
