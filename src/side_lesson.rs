@@ -1,7 +1,14 @@
 pub fn side_lesson() {
-    let duck_aircraft = ["boeing 737", "boeing 767", "boeing 787", "airbus 319", "airbus 320"];
+    let value_one = 24;
+    let value_two = 67;
+    let value = explicit_lifetime(&value_one, &value_two);
+    println!("{}", value);
+}
 
-    for aircraft in duck_aircraft.iter() {
-        println!("{}", aircraft)
+fn explicit_lifetime<'a>(p1: &'a i32, p2: &'a i32) -> &'a i32{
+    if p1 > p2 {
+        p1
+    } else {
+        p2
     }
 }
