@@ -1,29 +1,24 @@
+use std::io::{Error, Read};
 use std::fs::File;
-use std::io::ErrorKind;
 
 pub fn side_lesson() {
-    let filename = "/tmp/customer.json";
+    let filename = "/tmp/example_data.txt";
+    let file_data = read_file(filename);
 
-    match File::open(filename) {
-        Ok(file) => {
-            println!("{:#?}", file);
-        },
-        Err(error) => {
-            match error.kind() {
-                ErrorKind::NotFound => {
-                    match File::create(filename) {
-                        Ok(file) => {
-                            println!("File created");
-                        }
-                        Err(error) => {
-                            println!("{:#?}", error);
-                        }
-                    }
-                }
-                _ => {
-                    println!("{:#?}", error);
-                }
-            }
+    match file_data {
+        Ok(data) => {
+            println!("{}", data);
+        }
+        Err(_) => {
+
         }
     }
+}
+
+fn read_file(filename: &str) -> Result<String, Error> {
+    let mut file_handle = File::open(filename)?;
+    let mut file_data = String::new();
+
+    file_handle.read_to_string(&mut file_data)?;
+    Ok(file_data)
 }
