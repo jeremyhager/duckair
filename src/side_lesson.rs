@@ -1,19 +1,23 @@
-use std::collections::{VecDeque};
+use std::collections::HashMap;
 
 pub fn side_lesson() {
-    let mut flights:VecDeque<&str> = VecDeque::new();
+    let mut flights = HashMap::new();
 
-    flights.push_front("Orlando departs at 11:12");
-    flights.push_back("SLC departs at 12:05");
-    flights.push_front("London departs at 09:43");
-    flights.push_front("Boston departs at 06:20");
-    flights.push_back("Berlin departs at 15:30");
-    flights.push_back("Nashville departs at 17:11");
+    flights.insert("DA918", ("11:12", "Orlando"));
+    flights.insert("DA428", ("12:05", "Salt Lake City"));
+    flights.insert("DA98", ("09:43", "London"));
+    flights.insert("DA113", ("06:20", "Boston"));
+    flights.insert("DA41", ("15:30", "Berlin"));
+    flights.insert("DA2815", ("17:11", "Nashville"));
 
-    for flight in flights.iter() {
-        println!("{}", flight);
+    let flight_number = "DA531";
+    if !flights.contains_key(flight_number) {
+        flights.insert(flight_number, ("22:00", "Puerto Rico"));
+    } else {
+        println!("Flight {} is already entered", flight_number)
     }
 
-    let length = flights.len();
-    println!("There are {} flights", length);
+    for flight in flights.iter() {
+        println!("{:?}", flight);
+    }
 }
