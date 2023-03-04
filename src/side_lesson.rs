@@ -1,24 +1,61 @@
-use std::io::{Error, Read};
-use std::fs::File;
+struct Boeing {
+    required_crew: u8,
+    range: u16
+}
 
-pub fn side_lesson() {
-    let filename = "/tmp/example_data.txt";
-    let file_data = read_file(filename);
+struct Airbus {
+    required_crew: u8,
+    range: u16
+}
 
-    match file_data {
-        Ok(data) => {
-            println!("{}", data);
-        }
-        Err(_) => {
+trait Flight {
+    fn is_legal(&self, required_crew: u8, availble_crew: u8, range: u16, distance: u16) -> bool;
+}
 
+impl Flight for Boeing {
+    fn is_legal(&self, required_crew: u8, availble_crew: u8, range: u16, distance: u16) -> bool {
+        if (availble_crew >= required_crew) && (range + 150 > distance) {
+            true
+        } else {
+            false
         }
     }
 }
 
-fn read_file(filename: &str) -> Result<String, Error> {
-    let mut file_handle = File::open(filename)?;
-    let mut file_data = String::new();
+impl Flight for Airbus {
+    fn is_legal(&self, required_crew: u8, availble_crew: u8, range: u16, distance: u16) -> bool {
+        if (availble_crew >= required_crew) && (range + 280 > distance) {
+            true
+        } else {
+            false
+        }
+    }
+}
 
-    file_handle.read_to_string(&mut file_data)?;
-    Ok(file_data)
+pub fn side_lesson() {
+    let boeing = Boeing {
+        required_crew: 4,
+        range: 7370
+    };
+
+    let airbus = Airbus {
+        required_crew: 7,
+        range: 5280
+    };
+
+    let boeing_is_legal = boeing.is_legal(
+        boeing.required_crew, 
+        18, 
+        boeing.range, 
+        2385,
+    );
+
+    let airbus_is_legal = airbus.is_legal(
+        airbus.required_crew, 
+        3, 
+        airbus.range, 
+        2200
+    );
+
+    println!("Is the boeing flight legal? {}\nIs the airbus flight legal? {}", boeing_is_legal, airbus_is_legal);
 }
