@@ -1,17 +1,19 @@
+use std::collections::{VecDeque};
+
 pub fn side_lesson() {
-    let mut flights:Vec<&str> = Vec::new();
+    let mut flights:VecDeque<&str> = VecDeque::new();
 
-    flights.push("DA113\tto Boston departs at 06:20");
-    flights.push("DA98\tto London departs at 09:43");
-    flights.push("DA428\tto Salt Lake City departs at 12:05");
-    flights.push("DA41\tto Berlin departs at 15:30");
-    flights.push("DA2815\tto Nashville departs at 17:11");
-
-    flights.insert(2, "Some new option");
-    flights.remove(1);
+    flights.push_front("Orlando departs at 11:12");
+    flights.push_back("SLC departs at 12:05");
+    flights.push_front("London departs at 09:43");
+    flights.push_front("Boston departs at 06:20");
+    flights.push_back("Berlin departs at 15:30");
+    flights.push_back("Nashville departs at 17:11");
 
     for flight in flights.iter() {
         println!("{}", flight);
     }
 
+    let length = flights.len();
+    println!("There are {} flights", length);
 }
