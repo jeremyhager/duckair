@@ -1,16 +1,12 @@
-use std::collections::HashSet;
+use std::ops::Add;
 
 pub fn side_lesson() {
-    let mut flights = HashSet::new();
+    let sum = add(256, 262);
+    println!("{}", sum);
+}
 
-    flights.insert(("DA918", "11:12", "Orlando"));
-    flights.insert(("DA428", "12:05", "Salt Lake City"));
-    flights.insert(("DA98", "09:43", "London"));
-    flights.insert(("DA113", "06:20", "Boston"));
-    flights.insert(("DA41", "15:30", "Berlin"));
-    flights.insert(("DA2815", "17:11", "Nashville"));
-
-    for flight in flights.iter() {
-        println!("{:?}", flight);
-    }
+fn add<T>(operand1: T, operand2: T) -> T
+where T: Add<Output =T>
+{
+    operand1 + operand2
 }
