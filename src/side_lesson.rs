@@ -1,16 +1,24 @@
-use std::collections::HashSet;
+#[derive(Debug)]
+struct NavAid<T, U> {
+    name: String,
+    frequency: T,
+    data: U
+}
 
 pub fn side_lesson() {
-    let mut flights = HashSet::new();
+    let vor = NavAid {
+        name: String::from("DQN"),
+        frequency: 114.5,
+        data: String::from("DQN is a VOR")
+    };
 
-    flights.insert(("DA918", "11:12", "Orlando"));
-    flights.insert(("DA428", "12:05", "Salt Lake City"));
-    flights.insert(("DA98", "09:43", "London"));
-    flights.insert(("DA113", "06:20", "Boston"));
-    flights.insert(("DA41", "15:30", "Berlin"));
-    flights.insert(("DA2815", "17:11", "Nashville"));
+    let ndb_data:Option<String> = Option::None;
+    let ndb = NavAid {
+        name: String::from("HKF"),
+        frequency: 239,
+        data: ndb_data
+    };
 
-    for flight in flights.iter() {
-        println!("{:?}", flight);
-    }
+    println!("VOR info is: {:?}", vor);
+    println!("NDB info is: {:?}", ndb);
 }
