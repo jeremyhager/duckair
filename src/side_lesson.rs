@@ -1,24 +1,12 @@
-#[derive(Debug)]
-struct NavAid<T, U> {
-    name: String,
-    frequency: T,
-    data: U
-}
+use std::ops::Add;
 
 pub fn side_lesson() {
-    let vor = NavAid {
-        name: String::from("DQN"),
-        frequency: 114.5,
-        data: String::from("DQN is a VOR")
-    };
+    let sum = add(256, 262);
+    println!("{}", sum);
+}
 
-    let ndb_data:Option<String> = Option::None;
-    let ndb = NavAid {
-        name: String::from("HKF"),
-        frequency: 239,
-        data: ndb_data
-    };
-
-    println!("VOR info is: {:?}", vor);
-    println!("NDB info is: {:?}", ndb);
+fn add<T>(operand1: T, operand2: T) -> T
+where T: Add<Output =T>
+{
+    operand1 + operand2
 }
