@@ -1,12 +1,18 @@
-use std::ops::Add;
+use std::thread;
 
 pub fn side_lesson() {
-    let sum = add(256, 262);
-    println!("{}", sum);
-}
+    let outer_scope = 412;
 
-fn add<T>(operand1: T, operand2: T) -> T
-where T: Add<Output =T>
-{
-    operand1 + operand2
+    let join_handle = thread::spawn(move || {
+        outer_scope * 2
+    });
+
+    let result = join_handle.join();
+
+    match result {
+        Ok(value) => {
+            println!("{}", value);
+        }
+        Err(_) => {}
+    }
 }
